@@ -8,14 +8,14 @@ pipeline {
         WEB_DIR = '/var/www/html/'
     }
 
-        
+    stages {
         stage('Clone Repo') {
             steps {
                 git url: 'https://github.com/rohannhere/portfolio-deployment-CICD.git', branch: 'master'
             }
         }
 
-        stages {
+        
         stage('Install and configure Apache') {
             steps {
                 sshagent(credentials: ["${SSH_CRED}"]) {
